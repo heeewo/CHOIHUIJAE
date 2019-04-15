@@ -1,0 +1,81 @@
+class Member:
+	
+	def setId(self, a, b):
+		self.a = a
+		self.b = b
+		
+	def getId(self):
+		print(self.a, self.b)
+
+user = Member()
+user.setId("root", 1)
+user.getId()
+#############################################
+class Member:
+
+	def __init__(self, a, b):
+		self.a = a
+		self.b = b
+
+
+	def getId (self):
+		print("ID : " + self.a + ' passwd : ' + str(self.b))
+
+user1 = Member("heeewo", 123)
+user1.getId()
+##############################################
+class Person:
+
+	def __init__(self, name, age):
+		self.name = name
+		self.age = age
+
+	def aboutMe(self):
+		print("나는 부모 클래스 입니다.")
+
+
+class Student(Person):
+	school = "goorm school"
+
+	def aboutMe(self):
+		print("나는 " + self.name + str(self.age) + "살입니다")
+
+Me = Student("heeewo", 24)
+Me.aboutMe()
+##############################################
+class phoneBook:
+	call_count = 0
+	def __init__(self, name, number, religion, photo):
+		self.name = name
+		self.number = number
+		self.religion = religion
+		self.photo = photo
+		print("info is saved")
+
+	def showData(self):
+		print("name : " +self.name + "\nNumber : " + str(self.number) + "\nreligion : " + self.religion +"\nphoto : " + self.photo)
+
+	def countup(self):
+		phoneBook.call_count += 1
+
+class bestfriend(phoneBook):
+	def __init__(self, name, number, religion, photo):
+		self.name = name
+		self.number = number
+		self.religion = religion
+		self.photo = photo
+		print("info is saved")
+
+	def call(self):
+		bestfriend.countup(self)
+		print(bestfriend.call_count)
+
+root = phoneBook("heeewo", 6482, "헬조선", "없음")
+root.showData()
+user1 = bestfriend("user1", 8652, "양키", "없음")
+user1.showData()
+user1.call()
+user2 = bestfriend("user2", 4624, "짱께", "없음")
+user2.showData()
+user2.call()
+
