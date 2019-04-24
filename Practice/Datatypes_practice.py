@@ -54,4 +54,33 @@ picxel = input("가로*세로*심도 순으로 입력하시오 :")
 result = int(Picxel(picxel))
 print(result, "bit\n", result/2**3, "byte\n", result/2**13, "kbyte")
 print(result/2**23, "Mbyte")
+#####################################################################
+# 장문의 문자열에 있는 문자의 개수 , 숫자의 개수, 공백의 개수 등을 알아내는 프로그램
+A = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+number = []
+empty = []
+String = []
 
+
+def appenddata(num):
+    if num[0] in A:
+        number.append(num[0])
+    elif num[0] == ' ':
+        empty.append(num[0])
+    else:
+        String.append(num[0])
+
+
+def count_string(num):
+    # 만약 입력된 매개변수(num)이 공백과 같으면
+    if len(num) > 1:
+        appenddata(num)
+        count_string(num[1:])
+    else:
+        appenddata(num)
+
+
+string = list(input("장문의 문자열을 입력하시오"))
+count_string(string)
+print(number, len(number), empty, len(empty), String, len(String))
+###############################################################
