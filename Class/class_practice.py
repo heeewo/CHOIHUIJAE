@@ -160,4 +160,57 @@ print(n + "야")
 dog.run()
 dog.speak()
 ############################################################
+# 성명, 나이, 성별, 월급 및 입사일 등을 입력받아 각 항목에 맞게 출력하는 프로그램
+class Person:
+    def __init__(self, name, age, gender):
+        self.Name = name
+        self.Age = age
+        self.Gender = gender
 
+    def aboutMe(self):
+        print("이 름 : " + self.Name)
+        print("나 이 : " + self.Age)
+        print("성 별 : " + self.Gender)
+
+
+class Employee(Person):
+    def __init__(self, name, age, gender, salary, hiredate):
+        Person.__init__(self, name, age, gender)
+        self.Salary = salary
+        self.Hiredate = hiredate
+
+    def aboutMe(self):
+        Person.aboutMe(self)
+        print("월 급 : " + self.Salary + "원")
+        print("입사일 : " + self.Hiredate)
+
+
+oEmployee = Employee("김선우", "20", "남", "2,000,000", "2027년 10월 20일")
+oEmployee.aboutMe()
+########################################################################
+# 다각형을 만드는 다각형 클래스를 생성 상속으로 삼각형 클래스를 선분의 길이를 차례대로 입력받은 후 삼각형의 넓이를 구하여 출력
+class Polygon:
+    def __init__(self, no_of_sides):
+        self.n = no_of_sides
+        self.sides = no_of_sides
+
+    def inputSides(self):
+        self.sides = [float(input("선분" + str(i+1) + "의 길이 입력 :"))for i in range(self.n)]
+
+
+class Triangle(Polygon):
+    def __init__(self):
+        Polygon.__init__(self, 3)
+
+    def findArea(self):
+        a, b, c = self.sides
+        s = (a + b + c)/2
+        print('Semi-permimeter = (' + str(a) + '+' + str(b) + '+' + str(c) + ') /2 =' + str(a+b+c)+ '/2 =', s)
+        area = (s*(s-a)*(s-b)*(s-c))**0.5
+        print('삼각형의 면적 : %0.2f' % area)
+
+
+tri = Triangle()
+tri.inputSides()
+tri.findArea()
+######################################################################3`
