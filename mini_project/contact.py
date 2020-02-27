@@ -47,7 +47,7 @@ def store_contact(contact_list):
 
 def load_contact(contact_list):
     f = open("contact_db.txt", "rt")
-    lines = f.readline()
+    lines = f.readlines()
     num = len(lines) / 4
     num = int(num)
 
